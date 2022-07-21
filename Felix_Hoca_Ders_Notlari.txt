@@ -1,0 +1,162 @@
+context api tek basina bir state management sistem degil. 
+useState ve useReducer ile birlesince olur 
+
+ama redux in kendi icinde store u var bu nedenle tek basina bir state management sistem
+
+Route; switch case yapisi 
+path lerimiz case; element ise switch karsiligi
+
+details/:id    details den sonra ne gelirse gelsin details i return et demek 
+
+home dan direkt gidilecek yerlerde / kullanip kullanmamak farketmez
+ama details/:id  gibi yerlerde farkeder. 
+
+/  kullaninca absolute path
+
+fluid kullaninca sagdan soldan boslugu azaltiyor
+
+navbar gibi static yapilarda Link Navlink tercih edilir. 
+
+navbar da da navigate kullanilabilir onClick ine func vererek ama cok hos olmaz 
+
+
+login tusunun navigate ini ayarlarken / koymasak da farketmedi. cünkü home dan logine gidiyor. ama details a gitseydik farkederdi.
+
+
+"https://picsum.photos/800/800"   random foto link 
+
+
+
+input type email verme nedeni required verdigimizde validation yapsin diye 
+
+
+input type submit yada button da isim yazmak icin value 
+
+
+
+Önemli:  input type submit ile button arasindaki fark:
+button da;   input lara required verildiginde validation lari yapmaz 
+yani zorunlu alan olarak belirleme sansimiz olmaz 
+
+
+
+Firebase:
+hazir olarak yazilmis bir backend bize hizmet sunar
+kendine ait database i var. bu db de crud islemleri yapilabilir
+ücretli kismi da var ücretsiz kismi da var
+bazi firmalar kendileri backend yazmak yerine ücretli kismini kullaniyorlar
+firebase icinde ios android ve web icin app gelistirilebilir 
+
+freelance calismak icin cok uygun 
+
+
+Firebase, Google tarafından mobil ve web uygulamaları oluşturmak için geliştirilmiş ücretsiz bir platformdur.
+Kullanıcı girişlerinin olduğu ve verilerin saklandığı birden fazla platformda geliştirilecek bir yazılım projeniz varsa Firebase size bu konuda oldukça fayda sağlayacaktır.2022 itibariyle bulut bilişim teknolojisinin gelişmesiyle birlikte, büyük verilerin internet üzerinde depolanabilirliği ve erişilebilirliği kolaylaşmıştır.Günümüzde geliştirilen yazılım projelerinin kendine ait programlama dili ve bağlantı şekilleri vardır. Server-side kapsamında, dataların kaydedildiği ve gerektiği durumlarda kullanıcıya sunulması, platformların genel sorunudur. Firebase ise, bu noktada geliştirilmiş bir çözüm yoludur.
+
+
+auth kisminda sign in method larini düzenlemeyi unutmayalim 
+
+
+.env yazdiktan sonra yeniden start etmeyi unutmayalim 
+gitignore a .env eklemeyi unutmayalim 
+
+
+
+firebase e ait tüm kodlar bir dosyada olabilir yada auth kismi baska bir dosyada kodlar baska bir dosyada olabilir bunun icin auth import edilmeli 
+
+
+hook lar component yada custom hook icinde. normal func icinde de cagrilamaz 
+
+
+auth bilgilerini global de tutacagiz cünkü geneli ilgilendiriyor 
+
+{children}   yada props.children
+
+
+children = {<AppRouter /> }     children aslinda bununla ayni seydir 
+
+
+
+
+context de birden cok state vermek istersek provider in value kismina veriyoruz
+
+
+ dod notaion ile ulasiyorsak bu bir object dir. 
+const {Provider} = createContext()  seklinde bir kullanim da var. 
+Bu durumda AuthContext.Provider ile degil direkt Provider ile sarmalama yapariz 
+
+
+context ile tüm app leri sarmaladigimiz icin state degistiginde tüm component ler render edilir. Bu context in dezavantaji
+redux da bu sekilde degil 
+
+
+.env den api_key gelmezse yeniden baslatmak gerekir 
+
+
+intellisense extension   react da bootstrap icin 
+
+
+loading i false yapmak icin finally kullanmak en iyi yöntem 
+
+
+Spinner:
+
+<div className="spinner-border text-primary m-5" role="status">
+            <span className="sr-only">Loading...</span>
+</div>
+
+
+
+search icin form kullanma avantaji:
+onSubmit kullanmak enter da 
+type search input icin avantaj:  herhangi bir harf kelime yazdiktan sonra X isareti cikar ve silebiliriz
+
+
+
+onClick de referans yazarsak   e  yi otomatik yakalar  ama parametre iel yazarsak kendimiz yazmamiz gerekir 
+
+
+component disina üste konulan degiskenler render edilmez component ile birlikte 
+
+detail verisi details sayfasinda cekilir best practice. eger ana sayfada cekilirse cok yük getirir cünkü gerek oldugu yerde cekilmesi gerekir 
+
+
+Link deki to icine de -1 yazabiliyoruz
+
+
+privat router ayni component icinde de olabilir 
+
+
+navigate de  replace bir önceki route u siler 
+
+
+
+error.message var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
