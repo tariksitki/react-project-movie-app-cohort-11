@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GoogleIcon from "../helpers/GoogleIcon.svg";
+import { signInFunc } from "../auth/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -23,7 +25,11 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/tariksitki" target={"_blank"}>
+      <Link
+        color="inherit"
+        href="https://github.com/tariksitki"
+        target={"_blank"}
+      >
         {" by Tarik Sitki"}
       </Link>
       {` ${new Date().getFullYear()}`}
@@ -34,14 +40,27 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function Login() {
+  const navigate = useNavigate();
+
+  const [loginData, setLoginData] = React.useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = React.useState({
+    emailError: false,
+    passwordError: false,
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
+      /// firebase func:
+    signInFunc(loginData.email, loginData.password, navigate);
   };
 
   return (
@@ -77,6 +96,18 @@ export default function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) =>
+                setLoginData({ ...loginData, email: e.target.value })
+              }
+              value={loginData.email}
+
+                // Not: Normalde formik ile onBlur larda error yani input lari kirmizi yapma islemini daha kolay yapabiliriz ama bu projede manuel yapmak istedik.
+              onBlur={() =>
+                !loginData.email
+                  ? setError({ ...error, emailError: true })
+                  : setError({ ...error, emailError: false })
+              }
+              error={error.emailError}
             />
             <TextField
               margin="normal"
@@ -87,6 +118,16 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) =>
+                setLoginData({ ...loginData, password: e.target.value })
+              }
+              value={loginData.password}
+              onBlur={() =>
+                !loginData.password
+                  ? setError({ ...error, passwordError: true })
+                  : setError({ ...error, passwordError: false })
+              }
+              error={error.passwordError}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -102,13 +143,17 @@ export default function SignIn() {
             </Button>
 
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              CONTINUE WITH 
-              <img src={GoogleIcon} alt="googleIcon" style={{ marginLeft : "0.7rem" }} />
+              CONTINUE WITH
+              <img
+                src={GoogleIcon}
+                alt="googleIcon"
+                style={{ marginLeft: "0.7rem" }}
+              />
             </Button>
             <Grid container>
               <Grid item xs>
@@ -129,3 +174,5 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+// not: google ile devam tusu, ya form disinda konulur yada type submit degil button olmali

@@ -12,6 +12,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { signUpFunc } from "../auth/firebase";
+import { useNavigate } from "react-router-dom";
+
+// element olarak form kullanmanin güzelligi:  form a submit özeligi verebiliyoruz. input lari required yapabiliyoruz. burada element olarak form kullanamdik box kullandik ama, box larin component ine form verdik.
+// normal button a onClick verdigimizde; required lar calismaz.
 
 function Copyright(props) {
   return (
@@ -37,14 +42,44 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function Register() {
+  const [registerData, setRegisterData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [registerError, setRegisterError] = React.useState({
+    firstNameError: false,
+    lastNameError: false,
+    emailError: false,
+    passwordError: false,
+  });
+
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    /// Önemli:  mui deki bir form un input larindan veri bu sekilde cekilir.
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
+
+    /// Önemli: mui deki bir formun inputlarindan cekilen veri state e bu sekilde atilir. paranter icine yazilan email gibi isimler input un name idir.
+    setRegisterData({
+      ...registerData,
+      firstName: data.get("firstname"),
+      lastName: data.get("lastname"),
+      email : data.get("email"),
+      password : data.get("password")
     });
+      /// firebase signUp func:
+      // islem basarili ise firebase dosyasinda navigate yapariz. 
+    signUpFunc(registerData.email, registerData.password, navigate);
   };
 
   return (
@@ -68,7 +103,7 @@ export default function SignIn() {
           <Box
             component="form"
             onSubmit={handleSubmit}
-            noValidate
+            // noValidate
             sx={{ mt: 1 }}
           >
             <TextField
@@ -80,6 +115,16 @@ export default function SignIn() {
               name="firstname"
               autoComplete="firstname"
               autoFocus
+              onChange={(e) =>
+                setRegisterData({ ...registerData, firstName: e.target.value })
+              }
+              onBlur={() => {
+                return (
+                  !registerData.firstName && setRegisterError({ ...registerError, firstNameError: true }) 
+                )
+              }}
+                /// onBlur oldugunda; eger hem error state i varsa hem de firstname state i bos ise hata ver. user bir harf bile girse error kalkar. 
+              error={registerError.firstNameError && Boolean(!registerData.firstName) }
             />
             <TextField
               margin="normal"
@@ -89,7 +134,9 @@ export default function SignIn() {
               label="Last Name"
               name="lastname"
               autoComplete="lastname"
-              
+              onChange={(e) =>
+                setRegisterData({ ...registerData, lastName: e.target.value })
+              }
             />
             <TextField
               margin="normal"
@@ -99,7 +146,9 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              
+              onChange={(e) =>
+                setRegisterData({ ...registerData, email: e.target.value })
+              }
             />
             <TextField
               margin="normal"
@@ -110,6 +159,9 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) =>
+                setRegisterData({ ...registerData, password: e.target.value })
+              }
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

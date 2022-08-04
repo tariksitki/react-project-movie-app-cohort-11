@@ -1,8 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { signOutFunc } from "../auth/firebase";
 
 const Navbar = () => {
   const currentUser = true;
   const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    signOutFunc();
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-primary ">
@@ -15,7 +20,7 @@ const Navbar = () => {
           {currentUser ? (
             <>
               <h4 className="text-white me-4">Tarik Sitki</h4>
-              <button className="btn btn-primary border border-white me-4" onClick={() => navigate("/")}>
+              <button className="btn btn-primary border border-white me-4" onClick={handleLogOut}>
                 Logout
               </button>
             </>

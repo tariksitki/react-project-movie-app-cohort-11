@@ -51,7 +51,11 @@ freelance calismak icin cok uygun
 
 
 Firebase, Google tarafından mobil ve web uygulamaları oluşturmak için geliştirilmiş ücretsiz bir platformdur.
-Kullanıcı girişlerinin olduğu ve verilerin saklandığı birden fazla platformda geliştirilecek bir yazılım projeniz varsa Firebase size bu konuda oldukça fayda sağlayacaktır.2022 itibariyle bulut bilişim teknolojisinin gelişmesiyle birlikte, büyük verilerin internet üzerinde depolanabilirliği ve erişilebilirliği kolaylaşmıştır.Günümüzde geliştirilen yazılım projelerinin kendine ait programlama dili ve bağlantı şekilleri vardır. Server-side kapsamında, dataların kaydedildiği ve gerektiği durumlarda kullanıcıya sunulması, platformların genel sorunudur. Firebase ise, bu noktada geliştirilmiş bir çözüm yoludur.
+Kullanıcı girişlerinin olduğu ve verilerin saklandığı birden fazla platformda geliştirilecek bir yazılım projeniz varsa Firebase size bu konuda oldukça fayda sağlayacaktır.2022 itibariyle bulut bilişim teknolojisinin gelişmesiyle birlikte, büyük verilerin internet üzerinde depolanabilirliği ve erişilebilirliği kolaylaşmıştır.Günümüzde geliştirilen yazılım projelerinin kendine ait programlama dili ve bağlantı şekilleri vardır. Server-side kapsamında, dataların kaydedilmesi ve gerektiği durumlarda kullanıcıya sunulması, platformların genel sorunudur. Firebase ise, bu noktada geliştirilmiş bir çözüm yoludur.
+
+Firebase de hem user giris ve auth islemlerini hem de database ini kullanarak backend e ait crud islemlerinin hepsini yapabiliriz. 
+
+Ücretli kismi da var ücretsiz kismi da var. bazi firmalar kendileri backend yazmak yerine firebase tercih edebiliyorlar. 
 
 
 auth kisminda sign in method larini düzenlemeyi unutmayalim 
@@ -132,6 +136,12 @@ navigate de  replace bir önceki route u siler
 
 
 error.message var
+
+
+--- Icon yada logolari svg olarak yüklemenin avantajlari:
+
+1:  daha az yer kaplar
+2:  bir component haline getirilerek reusable yapilabilir. 
 
 
 
