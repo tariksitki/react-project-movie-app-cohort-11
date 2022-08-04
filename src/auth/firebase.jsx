@@ -55,7 +55,7 @@ const auth = getAuth(app);
 // };
 
 
-    /// async await:
+    /// async await   :
 
 export const signUpFunc = async (email, password, navigate) => {
   try {
@@ -99,7 +99,7 @@ export const signOutFunc = () => {
     } catch (error) {
         console.log(error);
     }
-};
+};  
 
 
 
