@@ -70,7 +70,7 @@ export const signUpFunc = async (email, password, navigate) => {
   } catch (error) {
     console.log(error);
   }
-};
+};  
 
 
 
